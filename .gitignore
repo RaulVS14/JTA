@@ -2,4 +2,4 @@
 /lib/
 .idea/
 .gradle/
-
+/battlesnakes/build/
