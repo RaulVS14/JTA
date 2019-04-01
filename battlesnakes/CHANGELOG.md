@@ -1,23 +1,19 @@
-This is an example changelog, the purpose of it is to help us figure out faster what you worked
-on and what you skipped.You will not be graded on how great this changelog is (or is not),
-so make it simple. Delete the contents and write your own notes here.
-
-
--- TASK 1
+-- TASK 1 - Fix getRandomMove test and method
 Updated com.battle.snakes.util.SnakeUtilTest > getRandomMove() with proper assertion
 Finished logic of getRandomMove method located in SnakeUtil class
 
--- TASK 2
-* TODO! Run the RandomSnakeController ’s snake through the game engine. It does not look very
-        random. Finish the getAllowedMoves method in the SnakeUtil class to fix this Snake. Make sure
-        it does not collide with other snakes or itself (unless it is trapped).
+-- TASK 2 - Finish getAllowedMoves
+Finish getNextMoveCoords method in order to simplify calculating coordinates for getAllowedMoves method
+Finish isInBounds method for checking if coordinates fit onto the board in order to validate getAllowedMoves coordinates
+Create logic for the getAllowedMoves method and finish it
 
--- TASK 3
-* TODO! Run the snake controlled with the SmartSnakeController through the game engine. Finish the
-        rest of the methods in the SnakeUtil class to make the “smart” snake smart. It is a lot better than
-        the “random” snake. But not really that good for planning more than a step.
+-- TASK 3 - Finish rest of methods
+Finish getDistance method
+Finish getNearestMoveToTarget method using the getDistance method and getNextMoveCoords method
+Finish getNearestCoordinateToTarget using getDistance method
 
--- TASK 4
+-- TASK 4 - Genius snake + 3 meaningful tests
+
 * TODO! Run the snake controlled with the GeniusSnakeController through the game engine . Make this
         snake as good as you can at playing the game. It should be better than the “smart” snake. Bonus
         points will be awarded for writing at least 3 tests for your “genius” snake, if they are meaningful.
@@ -28,8 +24,3 @@ Finished logic of getRandomMove method located in SnakeUtil class
 -- TASK 5
 * TODO!
 
--- TASK 6
-* TODO!
-
--- TASK 7
-* TODO!

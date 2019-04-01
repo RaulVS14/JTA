@@ -26,7 +26,10 @@ public class SnakeUtil {
     }
 
     public static boolean isInBounds(Board board, Coordinate coordinate) {
-        return board.getWidth() > coordinate.getX() && board.getHeight() > coordinate.getY();
+        return board.getWidth() > coordinate.getX() &&
+                coordinate.getX() >= 0 &&
+                board.getHeight() > coordinate.getY() &&
+                coordinate.getY() >= 0;
     }
 
     public static Coordinate getNextMoveCoords(MoveType moveType, Coordinate start) {
@@ -64,15 +67,17 @@ public class SnakeUtil {
 
         // Snake last move from the body list in order to get the starting position of the next move
         List<Coordinate> snakeBody = request.getYou().getBody();
-        Coordinate lastLocation = snakeBody.get(snakeBody.size() - 1);
+        Coordinate lastLocation = snakeBody.get(0);
         Board board = request.getBoard();
 
+        for (Coordinate coordinate : snakeBody) {
+            notAllowedCoordinates.add(coordinate);
+        }
         List<Snake> snakes = board.getSnakes();
 
         for (Snake snake : snakes) {
             for (Coordinate coordinate : snake.getBody()) {
                 notAllowedCoordinates.add(coordinate);
-                System.out.println(coordinate);
             }
         }
 
@@ -82,11 +87,7 @@ public class SnakeUtil {
                 allowedMoves.add(move);
             }
         }
-        /* TODO
-         * Given the move request, returns a list of all the moves that do not end in the snake dieing
-         * Hint: finding all the coordinates leading to the snakes death and
-         * comparing it to the potential moves is a good starting point
-         * */
+
         return allowedMoves;
     }
 
@@ -95,15 +96,17 @@ public class SnakeUtil {
     }
 
     public static MoveType getNearestMoveToTarget(Coordinate target, Coordinate current, List<MoveType> moves) {
-        /* TODO
-         * Given the target coordinate, the current coordinate and a list of moves, returns
-         * the nearest move to the target, selected from the moves list
-         * */
-        double targetDistance = getDistance(current,target);
+        // Get distance between target and current coordinates to compare the next steps to
+        double targetDistance = getDistance(current, target);
         MoveType nearestMove = moves.get(0);
+
         for (MoveType move : moves) {
-            if (getDistance(getNextMoveCoords(move, current),target)<targetDistance){
-                nearestMove = move;
+            double moveDistance = getDistance(getNextMoveCoords(move, current), target);
+            for (MoveType move2 : moves) {
+                double move2Distance = getDistance(getNextMoveCoords(move2, current), target);
+                if (moveDistance < targetDistance && moveDistance < move2Distance) {
+                    nearestMove = move;
+                }
             }
         }
         return nearestMove;
@@ -114,9 +117,12 @@ public class SnakeUtil {
          * Given the target coordinate and a list of coordinates, finds the nearest coordinate to the target
          * */
         Coordinate smallest = coords.get(0);
+        double distanceSmallest = getDistance(coords.get(0), target);
         for (Coordinate coord : coords) {
             for (Coordinate coord2 : coords) {
-                if (getDistance(coord, target) < getDistance(coord, target)) {
+                double distance = getDistance(coord, target);
+                if (distance < getDistance(coord2, target) && distance < distanceSmallest) {
+                    distanceSmallest = distance;
                     smallest = coord;
                 }
             }
