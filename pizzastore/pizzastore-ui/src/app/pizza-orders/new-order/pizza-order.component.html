@@ -1,0 +1,34 @@
+<form (ngSubmit)="submitOrder()" [formGroup]="form" class="container pizza-store-font" >
+  <div class="row mt-5">
+    <app-pizza-image [pizzas]="getPizzasFormArray()"
+                     [selectedPizza]="selectedPizza"
+                     [toppingNameFn]="getToppingLabel">
+    </app-pizza-image>
+
+    <div class="col-lg-8">
+      <h1 class="mb-4">New Order</h1>
+
+      <ng-container *ngIf="pizzaCreating; else orderSummary">
+        <app-pizza-creation [pizzasControls]="getPizzasControls()"
+                            [bases]="pizzaBases"
+                            [toppings]="toppings"
+                            (add)="addPizzaControl()"
+                            (select)="selectPizza($event)"
+                            (submit)="pizzaCreating = false"
+                            [selectedPizza]="selectedPizza"
+        ></app-pizza-creation>
+      </ng-container>
+
+      <ng-template #orderSummary>
+        <app-pizza-summary [form]="form"
+                           [total]="total"
+                           (back)="pizzaCreating = true"
+                           [baseDisplayFn]="getBaseLabel"
+                           [toppingDisplayFn]="getToppingLabel"
+                           [basePriceFn]="getBasePrice"
+                           [toppingPriceFn]="getToppingPrice">
+        </app-pizza-summary>
+      </ng-template>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,29 @@
+<app-customer-details [customerControl]="customerControl"></app-customer-details>
+
+<h4 class="mb-4 mt-4">Order summary</h4>
+<div *ngFor="let pizza of pizzasControl.value" class="order-summary__pizza">
+  <div *ngIf="pizza.base">
+    <h5>
+      {{ baseDisplayFn(pizza.base) }} Pizza
+      <span class="pizza-summary__price">{{ basePriceFn(pizza.base) | currency:'EUR':'symbol' }}</span>
+    </h5>
+
+    <div class="pizza-summary__toppings">
+      <div *ngFor="let topping of pizza.toppings" class="pizza-summary__topping">
+        <i class="fa fa-plus"></i>
+        {{ toppingDisplayFn(topping) }}
+        <span class="pizza-summary__price">{{ toppingPriceFn(topping) | currency:'EUR':'symbol' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="order-summary__total-price">
+  Total: {{ total | currency:'EUR':'symbol' }}
+</div>
+<div class="mt-3">
+  <button class="btn btn-lg btn-primary" type="submit" (click)="back.emit()">Back</button>
+  <button class="btn btn-lg btn-primary submit" type="submit">Place order</button>
+</div>
+
+
+

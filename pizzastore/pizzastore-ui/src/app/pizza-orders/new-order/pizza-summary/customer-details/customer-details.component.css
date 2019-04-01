@@ -1,0 +1,12 @@
+.order-form {
+  display: flex;
+}
+
+.danger {
+  color: red;
+}
+
+.form-input {
+  margin: 0 30px 20px 0;
+  flex-grow: 1;
+}

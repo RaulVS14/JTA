@@ -1,0 +1,11 @@
+.btn-primary {
+  background-color: #343a40 !important;
+}
+
+body {
+  padding-top: 56px;
+}
+
+.pizza-store-font {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}

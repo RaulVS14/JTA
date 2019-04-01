@@ -1,0 +1,26 @@
+<h4>
+  Your pizzas
+  <button type="button" class="add-pizza float-right" (click)="addPizza()">
+    <i class="fa fa-plus"></i>
+    Add pizza
+  </button>
+</h4>
+
+<div *ngFor="let pizza of pizzasControls; let i = index;">
+  <div class="order-header"
+       (click)="selectPizza(i)">
+    <i class="fa fa-fw"
+       [class.fa-chevron-down]="selectedPizza !== i"
+       [class.fa-chevron-up]="selectedPizza === i">
+    </i>
+    Pizza {{ i + 1 }}
+  </div>
+
+  <div [formGroup]="pizza" class="card card-body" [class.d-none]="selectedPizza !== i">
+    <app-pizza-base formControlName="base" [bases]="bases"></app-pizza-base>
+    <app-pizza-toppings formControlName="toppings" [toppings]="toppings"></app-pizza-toppings>
+  </div>
+</div>
+<button class="btn btn-lg btn-primary btn-block mt-5" (click)="submit.emit()">
+  Create order
+</button>

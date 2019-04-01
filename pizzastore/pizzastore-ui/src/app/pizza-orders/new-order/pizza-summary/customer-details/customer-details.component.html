@@ -1,0 +1,27 @@
+<!--TODO Add validation error messages for form inputs-->
+<div [formGroup]="customerControl">
+  <h4>Your details</h4>
+  <div class="order-form mt-3">
+    <div class="form-input">
+      <label for="name">Name <span class="danger">*</span></label>
+      <input formControlName="name" class="form-control" id="name" placeholder="Enter name" name="name" required>
+    </div>
+
+    <div class="form-input">
+      <label for="email">Email <span class="danger">*</span></label>
+      <input formControlName="email" class="form-control" id="email" placeholder="Enter email" name="email">
+    </div>
+  </div>
+
+  <div class="order-form">
+    <div class="form-input">
+      <label for="address">Address <span class="danger">*</span></label>
+      <input formControlName="address" class="form-control" id="address" placeholder="Enter address" name="address">
+    </div>
+
+    <div class="form-input">
+      <label for="phone">Phone <span class="danger">*</span></label>
+      <input formControlName="phone" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+    </div>
+  </div>
+</div>

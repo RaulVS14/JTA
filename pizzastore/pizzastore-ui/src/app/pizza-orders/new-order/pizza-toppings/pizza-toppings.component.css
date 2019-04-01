@@ -1,0 +1,59 @@
+.pizza-toppings {
+  margin: 10px 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.pizza-topping {
+  margin: 20px 0 0;
+  background: #eee;
+  border-radius: 20px;
+  padding: 10px 15px 10px 63px;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  flex-basis: 24%;
+  flex-shrink: 1;
+  user-select: none;
+}
+
+.pizza-topping:nth-child(4n) {
+  margin-right: 0;
+}
+
+input {
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+
+.pizza-topping-active {
+  background: orange;
+  color: #fff;
+  font-weight: 500;
+}
+
+.pizza-topping__icon {
+  background: #e6e6e6 no-repeat center center;
+  background-size: 35px;
+  width: 40px;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.pizza-topping__icon-mushroom {
+  background-image: url(../../../../assets/toppings/mushroom.png);
+}
+
+.pizza-topping__icon-pepperoni {
+  background-image: url(../../../../assets/toppings/pepperoni.png);
+}
+
+.pizza-topping__icon-tomato {
+  background-image: url(../../../../assets/toppings/tomato.png);
+}
+
+/*TODO Add CSS for bacon topping icon*/

@@ -1,0 +1,41 @@
+import { Injectable } from '@angular/core';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import decode from 'jwt-decode';
+
+@Injectable({providedIn: 'root'})
+export class AuthService {
+
+  constructor(private http: HttpClient,
+              public jwtHelper: JwtHelperService) {
+  }
+
+  public isAuthenticated(): boolean {
+    const token = localStorage.getItem('access_token');
+    return !this.jwtHelper.isTokenExpired(token);
+  }
+
+  login(username: string, password: string) {
+    return this.http.post<any>('/auth/login', {username, password})
+      .pipe(map(result => {
+        if (result && result.token) {
+          localStorage.setItem('access_token', result.token);
+        }
+      }));
+  }
+
+  register(username: string, password: string) {
+    // TODO Make a request to /auth/register endpoint
+  }
+
+  logout() {
+    localStorage.removeItem('access_token');
+  }
+
+  isAdmin(): boolean {
+    const token = localStorage.getItem('access_token');
+    const tokenPayload = decode(token);
+    return tokenPayload && tokenPayload.roles.includes('ROLE_ADMIN');
+  }
+}

@@ -1,0 +1,16 @@
+<h5 class="mt-3">Select toppings: </h5>
+<div class="pizza-toppings">
+  <label
+    *ngFor="let topping of toppings"
+    class="pizza-topping"
+    [class.pizza-topping-active]="value.includes(topping.id)">
+    <input
+      type="checkbox"
+      [attr.name]="topping.id"
+      [attr.value]="topping.id"
+      (change)="updateTopping(topping.id)"
+      [checked]="value.includes(topping.id)">
+    <span class="pizza-topping__icon pizza-topping__icon-{{ topping.name.toLowerCase() }}"></span>
+    {{ topping.name }}
+  </label>
+</div>

@@ -1,0 +1,12 @@
+<h5 class="mb-4">Select size:</h5>
+<label class="pr-3 container" *ngFor="let base of bases; let i = index;">
+  <input type="radio"
+         name="base{{uuid + i}}"
+         [attr.value]="base.id"
+         (change)="onChange(base.id)"
+         (focus)="onFocus(base.id)"
+         [checked]="value === base.id">
+  <span class="checkmark"></span>
+  {{ base.name }}
+</label>
+
