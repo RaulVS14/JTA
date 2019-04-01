@@ -1,5 +1,13 @@
 
 /lib/
-.idea/
-.gradle/
+.idea/*
+.gradle
 /battlesnakes/build/
+battlesnakes/src/test/resources/
+
+pizzastore/pizzastore-api/infra-jpa/out/production/classes/generated/
+pizzastore/pizzastore-api/infra-web/out/production/classes/generated/
+pizzastore/pizzastore-api/pizza-core/out/production/classes/generated/
+pizzastore/pizzastore-api/pizza-core/out/test/classes/generated_tests/
+pizzastore/pizzastore-api/pizza-main/out/production/classes/generated/
+pizzastore/pizzastore-api/pizza-web/
