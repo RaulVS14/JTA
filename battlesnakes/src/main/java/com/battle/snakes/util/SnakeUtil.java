@@ -99,13 +99,13 @@ public class SnakeUtil {
         // Get distance between target and current coordinates to compare the next steps to
         double targetDistance = getDistance(current, target);
         MoveType nearestMove = moves.get(0);
-
+        double nearestDistance =  getDistance(getNextMoveCoords(moves.get(0), current), target);
         for (MoveType move : moves) {
             double moveDistance = getDistance(getNextMoveCoords(move, current), target);
             for (MoveType move2 : moves) {
-                double move2Distance = getDistance(getNextMoveCoords(move2, current), target);
-                if (moveDistance < targetDistance && moveDistance < move2Distance) {
+                if (moveDistance < targetDistance && moveDistance < nearestDistance) {
                     nearestMove = move;
+                    nearestDistance = moveDistance;
                 }
             }
         }
@@ -113,9 +113,6 @@ public class SnakeUtil {
     }
 
     public static Coordinate getNearestCoordinateToTarget(Coordinate target, List<Coordinate> coords) {
-        /* TODO
-         * Given the target coordinate and a list of coordinates, finds the nearest coordinate to the target
-         * */
         Coordinate smallest = coords.get(0);
         double distanceSmallest = getDistance(coords.get(0), target);
         for (Coordinate coord : coords) {
