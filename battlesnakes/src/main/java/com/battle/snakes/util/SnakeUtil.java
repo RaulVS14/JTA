@@ -99,7 +99,7 @@ public class SnakeUtil {
         // Get distance between target and current coordinates to compare the next steps to
         double targetDistance = getDistance(current, target);
         MoveType nearestMove = moves.get(0);
-        double nearestDistance =  getDistance(getNextMoveCoords(moves.get(0), current), target);
+        double nearestDistance = getDistance(getNextMoveCoords(moves.get(0), current), target);
         for (MoveType move : moves) {
             double moveDistance = getDistance(getNextMoveCoords(move, current), target);
             for (MoveType move2 : moves) {
