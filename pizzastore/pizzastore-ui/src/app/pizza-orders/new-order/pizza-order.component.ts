@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder } from '@angular/forms';
+import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Product } from '../../@shared/product';
 import { ProductService } from './product.service';
 import { Pizza, PizzaOrder } from './pizza-order';
@@ -23,11 +23,11 @@ export class PizzaOrderComponent implements OnInit {
   toppings: Product[];
 
   form = this.fb.group({
-    customer: this.fb.group({  // TODO Add validations for customer details
-      name: [''],
-      email: [''],
-      phone: [''],
-      address: ['']
+    customer: this.fb.group({
+      name: ['', [Validators.required]],
+      email: ['', [Validators.compose([Validators.required, Validators.email])]],
+      phone: ['', [Validators.required]],
+      address: ['', [Validators.required]]
     }),
     pizzas: this.fb.array([
       this.createPizzasFormGroup()

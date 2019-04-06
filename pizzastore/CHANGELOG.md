@@ -6,7 +6,9 @@
  * Add CSS for pizza image bacon toppings
 
 -- TASK 2
-* TODO!
+* Add validation error messages for form inputs
+* Add validations for customer details
+* Validations - use the exception below
 
 -- TASK 3
 * TODO!

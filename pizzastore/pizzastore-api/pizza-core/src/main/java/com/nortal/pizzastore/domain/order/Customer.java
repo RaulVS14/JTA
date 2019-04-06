@@ -15,8 +15,14 @@ public class Customer {
   @Builder
   private Customer(String name, String email,
                    String phone, String address, User user) {
-
-    // TODO! Validations - use the exception below
+    String pattern = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9._%+-]+\\.[a-zA-Z]{2,}";
+    boolean verifyName = name == null || name.trim().length() == 0;
+    boolean verifyEmail = email == null || email.trim().length() == 0 || !email.matches(pattern);
+    boolean verifyPhone = phone == null || phone.trim().length() == 0;
+    boolean verifyAddress = address == null || address.trim().length() == 0;
+    if (verifyName || verifyEmail || verifyPhone || verifyAddress ){
+      throw new InvalidCustomer("Invalid form submitted!");
+    }
 
     this.name = name;
     this.email = email;

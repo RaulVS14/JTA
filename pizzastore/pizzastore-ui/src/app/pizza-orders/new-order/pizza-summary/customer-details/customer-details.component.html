@@ -1,27 +1,26 @@
-<!--TODO Add validation error messages for form inputs-->
 <div [formGroup]="customerControl">
   <h4>Your details</h4>
   <div class="order-form mt-3">
     <div class="form-input">
-      <label for="name">Name <span class="danger">*</span></label>
+      <label for="name">Name <span class="danger" *ngIf="customerControl.get('name').touched && !customerControl.get('name').valid">* Name required </span></label>
       <input formControlName="name" class="form-control" id="name" placeholder="Enter name" name="name" required>
     </div>
 
     <div class="form-input">
-      <label for="email">Email <span class="danger">*</span></label>
-      <input formControlName="email" class="form-control" id="email" placeholder="Enter email" name="email">
+      <label for="email">Email <span class="danger" *ngIf="customerControl.get('email').touched && !customerControl.get('email').valid">* Valid email required</span></label>
+      <input formControlName="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
     </div>
   </div>
 
   <div class="order-form">
     <div class="form-input">
-      <label for="address">Address <span class="danger">*</span></label>
-      <input formControlName="address" class="form-control" id="address" placeholder="Enter address" name="address">
+      <label for="address">Address <span class="danger" *ngIf="customerControl.get('address').touched && !customerControl.get('address').valid">* Address is required</span></label>
+      <input formControlName="address" class="form-control" id="address" placeholder="Enter address" name="address" required>
     </div>
 
     <div class="form-input">
-      <label for="phone">Phone <span class="danger">*</span></label>
-      <input formControlName="phone" class="form-control" id="phone" placeholder="Enter phone number" name="phone">
+      <label for="phone">Phone <span class="danger" *ngIf="customerControl.get('phone').touched && !customerControl.get('phone').valid" >* Number required </span></label>
+      <input formControlName="phone" class="form-control" id="phone" placeholder="Enter phone number" name="phone" required>
     </div>
   </div>
 </div>
