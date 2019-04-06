@@ -1,10 +1,9 @@
-This is an example changelog, the purpose of it is to help us figure out faster what you worked
-on and what you skipped.You will not be graded on how great this changelog is (or is not),
-so make it simple. Delete the contents and write your own notes here.
-
+## Changelog
 
 -- TASK 1
-* TODO!
+ * Add new topping
+ * Add CSS for bacon topping icon
+ * Add CSS for pizza image bacon toppings
 
 -- TASK 2
 * TODO!
