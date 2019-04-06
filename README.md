@@ -179,7 +179,7 @@ Admin - username: admin password: admin
 
 Customer - username: customer password: customer
 
-#### 3.1. Tasks 
+#### Tasks 
 At first familiarize yourself with the PizzaStore application and its code.
 There are some things  missing from the application that have to be implemented: 
 look for TODOs in the code. 
