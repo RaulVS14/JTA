@@ -11,7 +11,7 @@
 * Validations - use the exception below
 
 -- TASK 3
-* TODO!
+* Calculate the total price of the customer’s order on the server side.
 
 -- TASK 4
 * TODO!

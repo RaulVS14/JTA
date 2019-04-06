@@ -21,9 +21,12 @@ public class Order {
   private List<OrderItem> items = new ArrayList<>();
 
   public BigDecimal getTotalPrice() {
-
-    // TODO!
-
-    return null;
+    BigDecimal totalPrice = new BigDecimal(0);
+    for (OrderItem item : items) {
+      if (item != null && item.getPrice() != null && (item.getPrice() instanceof BigDecimal)) {
+        totalPrice = totalPrice.add(item.getPrice());
+      }
+    }
+    return totalPrice;
   }
 }
