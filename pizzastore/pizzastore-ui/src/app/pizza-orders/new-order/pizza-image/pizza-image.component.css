@@ -125,4 +125,32 @@
   display: none;
 }
 
-/*TODO Add CSS for pizza image bacon toppings*/
+.pizza-image__topping-bacon {
+  background-image: url(../../../../assets/toppings/bacon.png);
+  width: 56px;
+  height: 42px;
+}
+
+.pizza-image__topping-bacon:nth-child(1) {
+  left: 115px;
+  top: 120px;
+}
+
+.pizza-image__topping-bacon:nth-child(2) {
+  left: 75px;
+  top: 200px;
+}
+
+.pizza-image__topping-bacon:nth-child(3) {
+  left: 165px;
+  top: 195px;
+}
+
+.pizza-image__topping-bacon:nth-child(4) {
+  left: 240px;
+  top: 170px;
+}
+.pizza-image__topping-bacon:nth-child(5) {
+  left: 140px;
+  top: 290px;
+}

@@ -3,7 +3,9 @@
                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd"
                    logicalFilePath="18-add_new_topping.xml">
-
-  <!-- TODO! Add new topping -->
-
+  <changeSet id="add_new_topping" author="raul.muser@gmail.com">
+  <sql>
+    INSERT INTO product(id, name, category_code, price) VALUES (7, 'Bacon', 'PIZZA_TOPPING', '1.30');
+  </sql>
+  </changeSet>
 </databaseChangeLog>

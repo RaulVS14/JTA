@@ -56,4 +56,6 @@ input {
   background-image: url(../../../../assets/toppings/tomato.png);
 }
 
-/*TODO Add CSS for bacon topping icon*/
+.pizza-topping__icon-bacon {
+  background-image: url(../../../../assets/toppings/bacon.png);
+}
