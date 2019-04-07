@@ -1,14 +1,9 @@
 package com.battle.snakes.util;
 
 
-import com.battle.snakes.game.Board;
-import com.battle.snakes.game.Coordinate;
-import com.battle.snakes.game.MoveRequest;
-import com.battle.snakes.game.MoveType;
-import com.battle.snakes.game.Snake;
+import com.battle.snakes.game.*;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Random;
@@ -57,11 +52,7 @@ public class SnakeUtil {
   }
 
   public static List<MoveType> getAllowedMoves(MoveRequest request) {
-    /* TODO
-     * Given the move request, returns a list of all the moves that do not end in the snake dieing
-     * Hint: finding all the coordinates leading to the snakes death and
-     * comparing it to the potential moves is a good starting point
-     * */
+
     List<Coordinate> coordinateList = new ArrayList<>();
     List<MoveType> allowedMoves = new ArrayList<>();
 
