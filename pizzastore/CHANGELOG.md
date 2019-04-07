@@ -15,6 +15,8 @@
 
 -- TASK 4
 * Logical deletion
+* After implementing logical deletion, find only active orders in findAllOrders
+* After implementing logical deletion, find only active orders in findOrdersByUser
 
 -- TASK 5
 * TODO!

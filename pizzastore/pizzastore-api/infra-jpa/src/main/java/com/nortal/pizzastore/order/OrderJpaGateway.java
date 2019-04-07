@@ -33,16 +33,18 @@ class OrderJpaGateway implements OrderGateway {
 
   @Override
   public List<Order> findOrders() {
-    // TODO! After implementing logical deletion, find only active orders
-    return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "created")).stream()
+    return orderRepository.findAll(Sort.by(Sort.Direction.DESC, "created"))
+      .stream()
+      .filter((x) -> x.getActive())
       .map(mapper::toDomainEntity)
       .collect(toList());
   }
 
   @Override
   public List<Order> findOrdersByUser(User user) {
-    // TODO! After implementing logical deletion, find only active orders
-    return orderRepository.findByCustomerUsernameOrderByCreatedDesc(user.getUsername()).stream()
+    return orderRepository.findByCustomerUsernameOrderByCreatedDesc(user.getUsername())
+      .stream()
+      .filter((x) -> x.getActive())
       .map(mapper::toDomainEntity)
       .collect(toList());
   }
