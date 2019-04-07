@@ -24,6 +24,7 @@
 * Proper password encoding in matches method in PasswordEncoderImpl class
 * Register user
 * Make a request to /auth/register endpoint
+* Remove plain text passwords from 11-users.xml
 
 -- TASK 6
 * TODO!

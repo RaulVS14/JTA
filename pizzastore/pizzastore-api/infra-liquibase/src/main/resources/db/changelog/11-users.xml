@@ -21,11 +21,11 @@
   <changeSet id="add_admin_user" author="indrek.maask@nortal.com">
     <insert tableName="users">
       <column name="username" value="admin"/>
-      <column name="password" value="admin"/> <!-- FIXME! Plain text password... oh noes! -->
+      <column name="password" value="$2a$10$OcEAdVNz1eTq3WCjc1UITeiWbsSiECegLynUp.Jz/j3/hRIp.GSo2"/>
     </insert>
     <insert tableName="users">
       <column name="username" value="customer"/>
-      <column name="password" value="customer"/> <!-- FIXME! Plain text password... oh noes! -->
+      <column name="password" value="$2a$10$U1rBV5zrPzNOwVJHVSlUz.70i88G8ibC3v5I9KBe5qkI4erfVSyc2"/>
     </insert>
   </changeSet>
 
