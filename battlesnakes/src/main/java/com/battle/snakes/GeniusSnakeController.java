@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 @RestController
 @AllArgsConstructor
@@ -18,52 +19,66 @@ import java.util.List;
 @RequestMapping("/genius")
 public class GeniusSnakeController extends BaseController {
 
-    @RequestMapping(value = "/start", method = RequestMethod.POST, produces = "application/json")
-    public StartResponse start(@RequestBody StartRequest request) {
+  @RequestMapping(value = "/start", method = RequestMethod.POST, produces = "application/json")
+  public StartResponse start(@RequestBody StartRequest request) {
 
-        log.info(request.toString());
+    log.info(request.toString());
 
-        return StartResponse.builder()
-                .color("#188936")
-                .headType(HeadType.EVIL.getValue())
-                .tailType(TailType.BOLT.getValue())
-                .build();
+    return StartResponse.builder()
+      .color("#188936")
+      .headType(HeadType.EVIL.getValue())
+      .tailType(TailType.BOLT.getValue())
+      .build();
+  }
+
+  @RequestMapping(value = "/end", method = RequestMethod.POST)
+  public Object end(@RequestBody EndRequest request) {
+
+    log.info(request.toString());
+
+    return new HashMap<String, Object>();
+  }
+
+  @RequestMapping(value = "/move", method = RequestMethod.POST, produces = "application/json")
+  public MoveResponse move(@RequestBody MoveRequest request) {
+
+    log.info(request.toString());
+
+    List<MoveType> allowedMoves = SnakeUtil.getAllowedMoves(request);
+    List<Coordinate> body = request.getYou().getBody();
+    Board board = request.getBoard();
+    Coordinate head = body.get(0);
+
+
+    List<Coordinate> food = request.getBoard().getFood();
+
+    List<Coordinate> reachableFood = new ArrayList<>();
+
+    for (Coordinate coordinate : food) {
+      if (SnakeUtil.hasPath(board, body, head, coordinate)) {
+        reachableFood.add(coordinate);
+      }
     }
 
-    @RequestMapping(value = "/end", method = RequestMethod.POST)
-    public Object end(@RequestBody EndRequest request) {
+    Coordinate nearest = SnakeUtil.getNearestCoordinateToTarget(head, reachableFood);
 
-        log.info(request.toString());
-
-        return new HashMap<String, Object>();
+    List<MoveType> moves = new ArrayList<>();
+    for (MoveType move : allowedMoves) {
+      Coordinate nextMoveCoords = SnakeUtil.getNextMoveCoords(move, head);
+      if (SnakeUtil.hasPath(board, body, nextMoveCoords, nearest)) {
+        moves.add(move);
+      }
     }
 
-    @RequestMapping(value = "/move", method = RequestMethod.POST, produces = "application/json")
-    public MoveResponse move(@RequestBody MoveRequest request) {
-
-        log.info(request.toString());
-
-        List<MoveType> moves = SnakeUtil.getAllowedMoves(request);
-        List<Coordinate> body = request.getYou().getBody();
-        System.out.println("=========================================");
-        System.out.println(moves);
-        System.out.println(body);
-        System.out.println("=========================================");
-
-        if (moves.isEmpty()) {
-            return MoveResponse.builder()
-                    .move(MoveType.LEFT.getValue())
-                    .build();
-        }
-
-        Coordinate head = body.get(0);
-
-
-        List<Coordinate> food = request.getBoard().getFood();
-        Coordinate nearest = SnakeUtil.getNearestCoordinateToTarget(head, food);
-
-        return MoveResponse.builder()
-                .move(SnakeUtil.getNearestMoveToTarget(nearest, head, moves).getValue())
-                .build();
+    if (moves.isEmpty()) {
+      return MoveResponse.builder()
+        .move(MoveType.LEFT.getValue())
+        .build();
     }
+
+
+    return MoveResponse.builder()
+      .move(SnakeUtil.getNearestMoveToTarget(nearest, head, moves).getValue())
+      .build();
+  }
 }
