@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class SnakeUtilTest {
@@ -18,6 +19,14 @@ class SnakeUtilTest {
     assertTrue(moves.contains(move));
   }
 
+  @Test
+  void ifHasPath() {
+    Snake snake = createSnake(2, 2);
+    Coordinate head = snake.getBody().get(0);
+    MoveRequest moveRequest = createMoveRequestWithSnake(snake, 3, 3);
+    assertTrue(SnakeUtil.hasPath(moveRequest.getBoard(), snake.getBody(), head, createCoordinate(2, 2)));
+    assertFalse(SnakeUtil.hasPath(moveRequest.getBoard(), snake.getBody(), head, createCoordinate(3, 4)));
+  }
   //////////////////////////////////////////
   /*   DO NOT EDIT BELOW THIS LINE   */
   //////////////////////////////////////////
@@ -162,8 +171,8 @@ class SnakeUtilTest {
     List<MoveType> expected = new ArrayList<>();
     expected.add(MoveType.DOWN);
     List<Coordinate> body = new ArrayList<>();
-    body.add(createCoordinate(0,0));
-    body.add(createCoordinate(1,0));
+    body.add(createCoordinate(0, 0));
+    body.add(createCoordinate(1, 0));
 
     Snake snake = createSnake(body);
 
