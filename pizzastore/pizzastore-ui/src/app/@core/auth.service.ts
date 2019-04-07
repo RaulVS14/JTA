@@ -26,7 +26,13 @@ export class AuthService {
   }
 
   register(username: string, password: string) {
-    // TODO Make a request to /auth/register endpoint
+    return this.http.post<any>('/auth/register', {username, password})
+        .pipe(map(result => {
+          if (result && result.token) {
+            localStorage.setItem('access_token', result.token);
+          }
+        }
+        ));
   }
 
   logout() {

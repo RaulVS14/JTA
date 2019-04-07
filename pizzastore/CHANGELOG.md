@@ -19,7 +19,11 @@
 * After implementing logical deletion, find only active orders in findOrdersByUser
 
 -- TASK 5
-* TODO!
+* Create a registration form
+* Proper password encoding in encode method in PasswordEncoderImpl class
+* Proper password encoding in matches method in PasswordEncoderImpl class
+* Register user
+* Make a request to /auth/register endpoint
 
 -- TASK 6
 * TODO!
