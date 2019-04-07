@@ -39,6 +39,9 @@ class OrderEntity {
   @JoinColumn(name = "customer_id")
   private UserEntity customer;
 
+  @Column(name = "active_order")
+  private Boolean active;
+
   @Builder.Default
   @EqualsAndHashCode.Exclude
   @OneToMany(mappedBy = "order", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})

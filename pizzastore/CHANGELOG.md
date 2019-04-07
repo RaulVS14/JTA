@@ -14,7 +14,7 @@
 * Calculate the total price of the customer’s order on the server side.
 
 -- TASK 4
-* TODO!
+* Logical deletion
 
 -- TASK 5
 * TODO!

@@ -72,6 +72,7 @@ class OrderJpaGateway implements OrderGateway {
       .phone(customer.getPhone())
       .address(customer.getAddress())
       .customer(userEntity)
+      .active(true)
       .build();
 
     entity.setItems(createOrderItems(order, entity));
@@ -81,8 +82,10 @@ class OrderJpaGateway implements OrderGateway {
 
   @Override
   public void cancel(Order order) {
-    // TODO! Logical deletion
-    orderRepository.deleteById(order.getId());
+    Optional<OrderEntity> orderEntityOptional = orderRepository.findById(order.getId());
+    OrderEntity entity = orderEntityOptional.get();
+    entity.setActive(false);
+    orderRepository.save(entity);
   }
 
   private Set<OrderItemEntity> createOrderItems(Order order, OrderEntity entity) {

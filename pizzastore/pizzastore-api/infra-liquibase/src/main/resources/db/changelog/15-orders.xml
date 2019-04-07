@@ -19,6 +19,7 @@
       <column name="customer_id" type="bigint">
         <constraints nullable="false" foreignKeyName="order_customer_fkey" references="users(id)"/>
       </column>
+      <column name="active_order" type="BOOLEAN"/>
     </createTable>
   </changeSet>
 
