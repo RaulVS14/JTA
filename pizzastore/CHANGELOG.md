@@ -27,7 +27,4 @@
 * Remove plain text passwords from 11-users.xml
 
 -- TASK 6
-* TODO!
-
--- TASK 7
-* TODO!
+* PostgreSQL container setup
