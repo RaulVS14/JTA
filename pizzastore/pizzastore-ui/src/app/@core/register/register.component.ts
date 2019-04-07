@@ -45,7 +45,7 @@ export class RegisterComponent implements OnInit {
       .pipe(first())
       .subscribe(
         () => {
-          this.authService.login(this.f.username.value,this.f.username.value).subscribe(
+          this.authService.login(this.f.username.value,this.f.password.value).pipe(first()).subscribe(
             ()=>{
               this.router.navigate([this.returnUrl]);
             }
